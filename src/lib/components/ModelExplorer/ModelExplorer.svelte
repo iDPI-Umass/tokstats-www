@@ -13,7 +13,7 @@
     let likes, likes_input, likes_percentile;
     let duration, duration_input, duration_percentile;
     let comments, comments_input, comments_percentile;
-    let subscribers, subscribers_input, subscribers_percentile;
+    let saves, saves_input, saves_percentile;
     let upload_year, upload_year_input, upload_year_percentile;
 
     let stats;
@@ -73,16 +73,16 @@
             comments_input = event.target.value;
             comments_percentile = getPercentile(stats.quantiles.comments, comments_input);
         });
-        subscribers.addEventListener("sl-input", function(event){
+        saves.addEventListener("sl-input", function(event){
             if (stats == null) return;
             if (event.target.value == "") {
-                subscribers_input = null;
-                subscribers_percentile = stats.data.subscribers.median;
+                saves_input = null;
+                saves_percentile = stats.data.saves.median;
                 return
             }
             if (event.target.value <= -1) return;
-            subscribers_input = event.target.value;
-            subscribers_percentile = getPercentile(stats.quantiles.subscribers, subscribers_input);
+            saves_input = event.target.value;
+            saves_percentile = getPercentile(stats.quantiles.saves, saves_input);
         });
         upload_year.addEventListener("sl-input", function(event){
             if (stats == null) return;
@@ -189,7 +189,7 @@
         likes_input = null;
         duration_input = null;
         comments_input = null;
-        subscribers_input = null;
+        saves_input = null;
         upload_year_input = null;
 
         if (stats != null) {
@@ -197,7 +197,7 @@
             likes_percentile = stats.data.likes.median;
             duration_percentile = stats.data.duration.median;
             comments_percentile = stats.data.comments.median;
-            subscribers_percentile = stats.data.subscribers.median;
+            saves_percentile = stats.data.saves.median;
             upload_year_percentile = stats.data.upload_year.median;
         }
         else{
@@ -205,7 +205,7 @@
             likes_percentile = null;
             duration_percentile = null;
             comments_percentile = null;
-            subscribers_percentile = null;
+            saves_percentile = null;
             upload_year_percentile = null;
         }
     }
@@ -232,7 +232,7 @@
         <sl-input bind:this={likes} label="Likes" value={likes_input} type="number"></sl-input>
         <sl-input bind:this={duration} label="Duration (seconds)" value={duration_input} type="number"></sl-input>
         <sl-input bind:this={comments} label="Comments" value={comments_input} type="number"></sl-input>
-        <sl-input bind:this={subscribers} label="Subscribers" value={subscribers_input} type="number"></sl-input>
+        <sl-input bind:this={saves} label="Saves" value={saves_input} type="number"></sl-input>
         <sl-input bind:this={upload_year} label="Upload Year" value={upload_year_input} type="number"></sl-input>
     </div>
     <br>
@@ -255,8 +255,8 @@
             <p>{comments_input != null ? "percentile: " + comments_percentile + "%" : "median: "+comments_percentile}</p>
         </div>
         <div class="display-field">
-            <h1>{subscribers_input != null ? subscribers_input.toLocaleString() + " subscribers" : "Subscribers"}</h1>
-            <p>{subscribers_input != null ? "percentile: " + subscribers_percentile + "%" : "median: "+subscribers_percentile}</p>
+            <h1>{saves_input != null ? saves_input.toLocaleString() + " saves" : "Saves"}</h1>
+            <p>{saves_input != null ? "percentile: " + saves_percentile + "%" : "median: "+saves_percentile}</p>
         </div>
         <div class="display-field">
             <h1>{upload_year_input != null ? "Uploaded in " + upload_year_input : "Upload Year"}</h1>

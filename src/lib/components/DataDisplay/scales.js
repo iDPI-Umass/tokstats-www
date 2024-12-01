@@ -102,7 +102,7 @@ const scales = {
             ticks: getTicks()
         }
     },
-    subscribers: {
+    saves: {
         y: {
             ticks: getPercentTicks(),
             title: getTitle( "relative frequency" )

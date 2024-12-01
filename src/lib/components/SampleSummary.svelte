@@ -31,11 +31,11 @@
             <p>{collectionDate ? collectionDate : "..."}</p>
         </div>
         <div class="sample-info">
-            <h1>Random YouTube Videos Sampled</h1>
+            <h1>Random TikTok Videos Sampled</h1>
             <p>{verifiedHits ? verifiedHits.toLocaleString()+" videos" : "..."}</p>
         </div>
         <div class="sample-info">
-            <h1>Estimated Size of YouTube</h1>
+            <h1>Estimated Size of TikTok</h1>
             <p>{size ? size.toLocaleString()+" videos": "..."}</p>
         </div>
     </div>

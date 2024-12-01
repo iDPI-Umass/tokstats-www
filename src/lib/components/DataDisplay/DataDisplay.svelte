@@ -5,15 +5,14 @@
         "annual_uploads",
         "cumulative_uploads",
         "views",
-        "whisper_lang",
-        "subscribers",
+        "location_created",
+        "saves",
         "duration",
         "likes",
         "comments",
         "category",
-        "music",
-        "live_status",
-        "age_limit"
+        //"music",
+        //"live_status"
     ];
 
 </script>
