@@ -11,7 +11,7 @@ const getOptions = function ( source, name ) {
                 {
                     label: source.data.stats.data[ name ].unit,
                     data: source.data.stats.data[ name ].values,
-                    backgroundColor: "#eb6d9d"
+                    backgroundColor: "#11db65"
                 }
             ]
         },

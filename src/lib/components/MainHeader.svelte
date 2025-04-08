@@ -8,7 +8,7 @@
     <nav>
         <sl-button href="/">
             <img slot="prefix" src="/favicon.png" alt="">
-            TubeStats
+            TokStats
         </sl-button>
 
         <sl-button href="/about" >

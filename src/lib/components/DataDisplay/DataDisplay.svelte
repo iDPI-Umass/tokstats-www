@@ -40,7 +40,7 @@
         flex: 1 1 50%;
         position: relative;
         aspect-ratio: 16 / 9;
-        min-width: 400px;
+        min-width: 800px;
         padding: 1rem;
     }
 
