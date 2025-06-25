@@ -1,4 +1,6 @@
 import * as S3 from "@dashkite/dolores/bucket";
+import * as Time from "@dashkite/joy";
+import {log, logError} from './helpers.js';
 
 const checkBucket = async function ( bucket ) {
   const exists = await S3.hasBucket( bucket.name );
@@ -16,9 +18,17 @@ const check = async function ( config ) {
 
 
 const deployBucket = async function ( bucket ) {
-  await S3.putBucket( bucket.name );
+  if (!(await S3.hasBucket( bucket.name ))) {
+    await S3.putBucket( bucket.name );
+    log( `initalized ${bucket.name}` );
+    log( 'waiting for bucket to stabilize...' );
+    await Time.sleep( 30_000 );
+  }
+  
 
   // Place the bucket into website mode.
+  log( `configuring ${bucket.name} for website mode` );
+  await S3.removeBlocks( bucket.name );
   await S3.putBucketPolicy( bucket.name, {
     Version: "2012-10-17",
     Statement: [{
@@ -35,6 +45,7 @@ const deployBucket = async function ( bucket ) {
   } else if ( bucket.redirect != null ) {
     await S3.putBucketRedirect( bucket.name, bucket.redirect );
   }
+  log( `${bucket.name} deployed!` );
 };
 
 const deploy = async function ( config ) {
@@ -45,8 +56,11 @@ const deploy = async function ( config ) {
 
 
 const teardownBucket = async function ( bucket ) {
+  log( `emptying bucket ${bucket.name} `);
   await S3.emptyBucket( bucket.name );
+  log( `bucket ${bucket.name} now empty, deleting...` );
   await S3.deleteBucket( bucket.name );
+  log( `bucket ${bucket.name} deleted.` );
 };
 
 const teardown = async function ( config ) {
@@ -60,21 +74,11 @@ const teardown = async function ( config ) {
 // in the S3 bucket relative to the local directory. Local directory is authoritative.
 const sync = async function( config, files ) {
   const bucket = config.buckets[0].name
-  const ignore = config.buckets[0].ignore ?? [];
   const operations = [];
 
   // first, get a dictionary of published items
   const published = {};
-  let objects = await S3.listObjects( bucket );
-  objects = objects.filter( o => {
-    for ( const prefix of ignore ) {
-      if ( o.Key.startsWith(prefix) ) {
-        return false;
-      }
-    }
-    return true;
-  });
-
+  const objects = await S3.listObjects( bucket );
   for ( const object of objects ) {
     published[ object.Key ] = Object.assign( object, {
       ETag: JSON.parse( object.ETag )
@@ -108,34 +112,36 @@ const sync = async function( config, files ) {
   if (operations.length > 0 ) {  
     for ( const operation of operations ) {  
       if ( operation.type === "add" ) {
-        console.log( `... add [ ${ operation.key } ]` );
+        log( `... add [ ${ operation.key } ]` );
 
         await S3.putObject({
           Bucket: bucket,
           Key: operation.key,
           ContentMD5: operation.file.hash64,
           ContentType: operation.file.type,
+          CacheControl: "max-age=60, s-maxage=31536000",
           Body: operation.file.content
         });
 
       } else if ( operation.type === "update" ) {
-        console.log( `... update [ ${ operation.key } ]` );
+        log( `... update [ ${ operation.key } ]` );
 
         await S3.putObject({
           Bucket: bucket,
           Key: operation.key,
           ContentMD5: operation.file.hash64,
           ContentType: operation.file.type,
+          CacheControl: "max-age=60, s-maxage=31536000",
           Body: operation.file.content
         });
       
       } else if ( operation.type === "delete" ) {
-        console.log( `... delete [ ${ operation.key } ]` );
+        log( `... delete [ ${ operation.key } ]` );
         await S3.deleteObject( bucket, operation.key );
       }
     }
   } else {
-    console.log( "No file sync required." );
+    log( "No file sync required." );
   }
 
 };
