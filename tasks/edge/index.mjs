@@ -5,7 +5,7 @@ import * as Route53 from "@dashkite/dolores/route53";
 import * as CF from "@dashkite/dolores/stack";
 import * as Distro from "@dashkite/dolores/cloudfront";
 import _Templates from "@dashkite/template";
-import {log, logError} from '../helpers.js';
+import {log, logError} from '../helpers';
 const Templates = _Templates.default;
 
 
