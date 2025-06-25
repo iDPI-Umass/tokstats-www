@@ -1,6 +1,6 @@
 import * as S3 from "@dashkite/dolores/bucket";
 import * as Time from "@dashkite/joy";
-import {log, logError} from './helpers';
+import {log, logError} from './helpers.mjs';
 
 const checkBucket = async function ( bucket ) {
   const exists = await S3.hasBucket( bucket.name );
