@@ -6,7 +6,7 @@ on:
 
 jobs:
   publish:
-    name: Build and Publish TubeStats
+    name: Build and Publish TokStats
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
