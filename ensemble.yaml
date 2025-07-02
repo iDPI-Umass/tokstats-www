@@ -1,25 +1,25 @@
 production-www:
-  namespace: tubestats
+  namespace: tokstats
   bucket-sync:
     directory: build
-    bucket: tubestats.org
+    bucket: tokstats.org
   buckets:
-    - name: tubestats.org
+    - name: tokstats.org
       website:
         index: index.html
         error: index.html
-    - name: www.tubestats.org
-      redirect: tubestats.org
+    - name: www.tokstats.org
+      redirect: tokstats.org
   edge:
     name: www
     certificate:
-      verification: tubestats.org
+      verification: tokstats.org
     origins:
-      - domain: tubestats.org.s3-website-us-east-1.amazonaws.com
+      - domain: tokstats.org.s3-website-us-east-1.amazonaws.com
         protocol: http     
     aliases:
-      - tubestats.org
-      - www.tubestats.org
+      - tokstats.org
+      - www.tokstats.org
     ttl:
       default: 86400 # 1 day
       min: 0

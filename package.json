@@ -12,6 +12,7 @@
     "@sveltejs/adapter-auto": "^1.0.0",
     "@sveltejs/adapter-static": "^2.0.1",
     "@sveltejs/kit": "^1.15.9",
+    "chalk": "^5.4.1",
     "fast-glob": "^3.2.12",
     "gulp": "^4.0.2",
     "js-yaml": "^4.1.0",
