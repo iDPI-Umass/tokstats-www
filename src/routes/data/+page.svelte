@@ -1,4 +1,4 @@
-<main>
+<!--main>
     <section class="tube-copy">
         <h1>About the data</h1>
 
@@ -42,9 +42,16 @@
             </p>
     </section>
 
+</main-->
+
+<main>
+    <section class="tube-copy">
+        <h1>About the Data</h1>
+        <p>
+            [Coming Soon]
+        </p>
+    </section>
 </main>
-
-
 
 
 <style>

@@ -1,4 +1,4 @@
-<main>
+<!--main>
     <section class="tube-copy">
         <h1>Read our paper</h1>
         <ul>
@@ -27,6 +27,15 @@
 
     </section>
 
+</main-->
+
+<main>
+    <section class="tube-copy">
+        <h1>Read Our Paper</h1>
+        <p>
+            [Coming Soon]
+        </p>
+    </section>
 </main>
 
 

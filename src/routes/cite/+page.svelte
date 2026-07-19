@@ -1,4 +1,4 @@
-<main>
+<!--main>
     <section class="tube-copy">
         <h1>How to cite TubeStats</h1>
             <p>
@@ -12,6 +12,15 @@
             </p>
             <p class="indent">
                 McGrady, R., Zheng, K., Curran, R., Baumgartner, J., & Zuckerman, E. (2023). Dialing for Videos: A Random Sample of YouTube. <em>Journal of Quantitative Description: Digital Media</em>, 3. https://doi.org/10.51685/jqd.2023.022
+            </p>
+    </section>
+</main-->
+
+<main>
+    <section class="tube-copy">
+        <h1>Cite TokStats</h1>
+            <p>
+                [Coming Soon]
             </p>
     </section>
 </main>

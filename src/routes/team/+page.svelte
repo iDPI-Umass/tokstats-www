@@ -1,4 +1,4 @@
-<main>
+<!--main>
     <section class="tube-copy">
         <h1>Our team</h1>
         <div class="logo">
@@ -21,6 +21,22 @@
         <p><a href="mailto:tubestatsidpi@gmail.com">Send us an email</a></p>
     </section>
 
+</main-->
+
+<main>
+    <section class="tube-copy">
+        <h1>Our Team</h1>
+        <div class="logo">
+            <img src="idpi.png">
+        </div>
+
+            <p>
+                TubeStats is a project from the <a href="https://publicinfrastructure.org" target="_blank" rel="noopener noreferrer">Initiative for Digital Public Infrastructure</a> (iDPI) at the University of Massachusetts Amherst.
+            </p>
+            <p>
+                [Coming Soon]
+            </p>
+    </section>
 </main>
 
 <!--<h2>Introduction</h2>-->
