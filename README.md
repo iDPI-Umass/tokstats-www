@@ -1,11 +1,11 @@
-# TubeStats
-TubeStats.org - YouTube Data Visualization Project
+# TokStats
+Tokstats.org - YouTube Data Visualization Project
 
 ## Background
 
-TubeStats is a project of computer, data, and social scientists to explore and visualize YouTube. The website running the visualizations is available at https://tubestats.org. The code that runs the web frontend is here. 
+TokStats is a project of computer, data, and social scientists to explore and visualize YouTube. The website running the visualizations is available at https://TokStats.org. The code that runs the web frontend is here. 
 
-TubeStats was built by Kevin Zheng working with the [Initiative for Digital Public Infrastructure](https://publicinfrastructure.org) (iDPI).
+TokStats was built by Kevin Zheng and Reagan Keeney working with the [Initiative for Digital Public Infrastructure](https://publicinfrastructure.org) (iDPI).
 
 ## Main Tasks
 
@@ -37,7 +37,7 @@ There are Gulp tasks that allow you to perform other actions, but most people wo
 You only need this if you're setting up an endpoint for the first time, or if the infrastructure configuration needs to be updated. Note that you'll need sufficient permissons in iDPI's AWS account.
 
 ```bash
-AWS_PROFILE=tubestats npx gulp deploy --environment=production-www
+AWS_PROFILE=TokStats npx gulp deploy --environment=production-www
 ```
 
 ### Manually Building Assets
@@ -53,7 +53,7 @@ npx gulp build
 You can run the publish action locally, if you have permissions with iDPI's AWS account. Use the following command:
 
 ```bash
-AWS_PROFILE=tubestats npx gulp publish --environment=production-www
+AWS_PROFILE=TokStats npx gulp publish --environment=production-www
 ```
 ## Contributing
 
